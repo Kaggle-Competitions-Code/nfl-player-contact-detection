@@ -38,11 +38,17 @@ nerate tabular features (01/21)
 |----|----------|------|-----|
 |Use OpenFE to generate tabular features|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train 64 openfe features|0.583|0.591|
 |Train seperate models for player 2 player contact & player 2 ground model on tabular data|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train seperate models for p2p & p2g tabular data |0.583|0.505|
-|Group k fold using game_id instead of game_play|se [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train group k fold using game_id|0.583|0.586|
+|Group k fold using game_id instead of game_play|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train group k fold using game_id|0.583|0.586|
+|Exclude distance > 2.5|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train and tune threshold with examples dist < 2.5 [pos:neg 1:75->1:11]|0.583|0.582|
 
 ## Problems
 1. Bad peformance for player2ground prediction 
     > p2g score: 0.29475; p2g threshold: 0.06826
     >
     > p2p score: 0.67806; p2p threshold: 0.31533
-2. Bad performance training seperate models (might be because of the evaluating metrics)
+2. Bad performance training seperate models (might be because of the evaluating metrics + the bad performance of the p2g model)
+   > 0.505 -> 0.583 after change p2g thresh from 0.06826 -> 0.31533
+3. How to handle the image so that the NN is aware of the task?
+   1. Draw bbox of the two player helmets (1 player) in the image?
+   2. Crop the image by helmets bbox?
+4. Use a threshold for distance will not improve the performance of a GBDT model, using 2.5 as the threshold will have slight decrease in the score (0.001) but faster training time (10x).
