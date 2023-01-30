@@ -25,13 +25,14 @@ nerate tabular features (01/21)
     2. Get the feature importance of the model
     3. Use OpenFE to generate 64~256 features and save the dataset
 - [x] Train seperate models for player-player and player-ground models to see if there's any improvements (01/22)
-- [ ] Tune one hyperparams for XGBoost model (01/28)
+- [ ] Tune one hyperparams for XGBoost model
 - [ ] Try other GBDT models / AutoGluon if the tuned model has a competitive performance
 
 ### VIDEO/IMAGE
-- [ ] Understand the helmet dataset (01/24)
-- [ ] Visualize helmets bbox (01/25)
-- [ ] Hands on CV models (01/28)
+- [x] Understand the helmet dataset (01/24)
+- [ ] Prepare CV dataset (01/30)
+- [ ] Visualize helmets bbox (01/30)
+- [ ] Hands on CV models (01/30)
    
 ## Ideas & Experiments
 |IDEA|Experiment|Before|After|
@@ -39,7 +40,7 @@ nerate tabular features (01/21)
 |Use OpenFE to generate tabular features|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train 64 openfe features|0.583|0.591|
 |Train seperate models for player 2 player contact & player 2 ground model on tabular data|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train seperate models for p2p & p2g tabular data |0.583|0.505|
 |Group k fold using game_id instead of game_play|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train group k fold using game_id|0.583|0.586|
-|Exclude distance > 2.5|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train and tune threshold with examples dist < 2.5 [pos:neg 1:75->1:11]|0.583|0.582|
+|Exclude distance > 2.5|Use Group k fold to train and tune threshold with examples dist < 2.5 [pos:neg 1:75->1:11]|0.586|0.582|
 
 ## Problems
 1. Bad peformance for player2ground prediction 
@@ -47,8 +48,8 @@ nerate tabular features (01/21)
     >
     > p2p score: 0.67806; p2p threshold: 0.31533
 2. Bad performance training seperate models (might be because of the evaluating metrics + the bad performance of the p2g model)
-   > 0.505 -> 0.583 after change p2g thresh from 0.06826 -> 0.31533
+   > 0.505 -> 0.583 (with Group k fold) after change p2g thresh from 0.06826 -> 0.31533
 3. How to handle the image so that the NN is aware of the task?
    1. Draw bbox of the two player helmets (1 player) in the image?
    2. Crop the image by helmets bbox?
-4. Use a threshold for distance will not improve the performance of a GBDT model, using 2.5 as the threshold will have slight decrease in the score (0.001) but faster training time (10x).
+4. Use a threshold for distance will not improve the performance of a GBDT model, using 2.5 as the threshold will have slight decrease in the score (0.004) but faster training time (10x).
