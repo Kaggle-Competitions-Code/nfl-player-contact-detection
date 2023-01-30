@@ -2,7 +2,7 @@
 [1st and Future - Player Contact Detection](https://www.kaggle.com/competitions/nfl-player-contact-detection)
 
 ## NOTES
-1. STEP (0.1s 10Hz) - FRAME (step/10*59.95+5*59.95) - SAMPLE RATE (59.94Hz.)
+1. STEP (0.1s 10Hz) - FRAME `(step/10*59.95+5*59.95)` - SAMPLE RATE (59.94Hz.)
     1. Tracking data is collected at 10Hz every 0.1 second should have a datapoint.
     2. Video data is collected at 59.94Hz.
     3. Submissions are at the tracking data 10Hz.
@@ -16,7 +16,7 @@
 nerate tabular features (01/21)
 - [x] Write a notebook to train an XGBoost model (01/22)
 - [x] Write a notebook to generate tabular features (01/21)
-- [ ] Feature engineering for tabular data (01/27)
+- [ ] Feature engineering for tabular data (01/31)
     1. FE on tracking data ('x_position_1',
        'y_position_1', 'speed_1', 'distance_1', 'direction_1', 'orientation_1',
        'acceleration_1', 'sa_1', 'x_position_2', 'y_position_2', 'speed_2',
@@ -30,9 +30,9 @@ nerate tabular features (01/21)
 
 ### VIDEO/IMAGE
 - [x] Understand the helmet dataset (01/24)
-- [ ] Prepare CV dataset (01/30)
-- [ ] Visualize helmets bbox (01/30)
-- [ ] Hands on CV models (01/30)
+- [ ] Prepare CV dataset (01/31)
+- [x] Visualize helmets bbox (01/30)
+- [ ] Hands on CV models (01/31)
    
 ## Ideas & Experiments
 |IDEA|Experiment|Before|After|
