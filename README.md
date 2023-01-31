@@ -41,6 +41,7 @@ nerate tabular features (01/21)
 |Train seperate models for player 2 player contact & player 2 ground model on tabular data|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train seperate models for p2p & p2g tabular data |0.583|0.505|
 |Group k fold using game_id instead of game_play|Use [XGBoost baseline](https://www.kaggle.com/code/columbia2131/nfl-player-contact-detection-simple-xgb-baseline) to train group k fold using game_id|0.583|0.586|
 |Exclude distance > 2.5|Use Group k fold to train and tune threshold with examples dist < 2.5 [pos:neg 1:75->1:11]|0.586|0.582|
+|Use features with helmet data|Use Group k fold and helmet features to train the model|0.582|?|
 
 ## Problems
 1. Bad peformance for player2ground prediction 
